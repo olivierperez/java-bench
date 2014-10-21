@@ -5,7 +5,7 @@ Tools to bench and compare different codes producing the same result.
 
 # How-to
 ## Implements the Benchmarkable interface
-You have ti implements Benchamrkable for each code youy want to bench.
+You have to implements Benchamrkable for each code you want to bench.
 
     public class Slow extends Benchmarkable {
         @Override
@@ -21,7 +21,7 @@ You have ti implements Benchamrkable for each code youy want to bench.
 ## Declares what Benchmarkable to bench
 In the Main class, you have to call benchmarker.addBenchmarkable for each Benchmarkable you want to bench.
 
-__Example:__ _We want to compare execution volicity between Fast and Slow Benchmarkables._
+__Example:__ _We want to compare execution velocity between Fast and Slow Benchmarkables._
 
     benchmarker.addBenchmarkable(new Fast());
     benchmarker.addBenchmarkable(new Slow());
@@ -64,6 +64,6 @@ Look at the output console.
     Total time: 11283908 ns
 
 # Want something more ?
-If you want the Benchmarker do sopmething more, feel free to tell me what you need/want.
+If you want the Benchmarker do something more, feel free to tell me what you need/want.
 
 You may also fork this repository, do the job in your own fork, and ask a pull request.
