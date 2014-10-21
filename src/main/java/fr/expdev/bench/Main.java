@@ -7,24 +7,24 @@ import java.util.concurrent.ExecutionException;
 import org.apache.commons.lang3.StringUtils;
 import fr.expdev.bench.bench.benchmarker.Benchmarker;
 import fr.expdev.bench.bench.benchmarker.ThreadMode;
+import fr.expdev.bench.bench.demo.Fast;
+import fr.expdev.bench.bench.demo.Slow;
 import fr.expdev.bench.bench.mysql.engine.InsertInnodb;
 import fr.expdev.bench.bench.mysql.engine.InsertMyisam;
 
 /**
  * @author Olivier PEREZ
  */
-public class App {
+public class Main {
 
     public static void main(String[] args) throws IOException, ExecutionException, InterruptedException {
         Benchmarker benchmarker = new Benchmarker(ThreadMode.BY_BENCHMARKABLE);
 
-        benchmarker.addBenchmarkable(new InsertInnodb());
-        benchmarker.addBenchmarkable(new InsertMyisam());
+        benchmarker.addBenchmarkable(new Fast());
+        benchmarker.addBenchmarkable(new Slow());
 
         benchmarker.bench(1);
         benchmarker.bench(50);
-        benchmarker.bench(1000);
-        benchmarker.bench(5000);
 
         display(benchmarker.stop());
 
