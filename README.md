@@ -66,4 +66,4 @@ Look at the output console.
 # Want something more ?
 If you want the Benchmarker do something more, feel free to tell me what you need/want.
 
-You may also fork this repository, do the job in your own fork, and ask a pull request.
+You may also [fork](https://github.com/olivierperez/java-bench/fork) this repository, do the job in your own fork, and ask a pull request.
