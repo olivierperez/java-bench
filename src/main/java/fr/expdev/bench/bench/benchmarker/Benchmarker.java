@@ -18,11 +18,11 @@ import fr.expdev.bench.bench.Benchmarkable;
  */
 public class Benchmarker {
 
-    public static final Comparator<Class> CLASS_COMPARATOR = (o1, o2) -> o1.getSimpleName().compareTo(o2.getSimpleName());
+    public static final Comparator<Class<?>> CLASS_COMPARATOR = Comparator.comparing(Class::getSimpleName);
 
     private final List<Benchmarkable> benchmarkables = new ArrayList<>();
 
-    private final Map<Long, Map<Class, Long>> results = new TreeMap<>();
+    private final Map<Long, Map<Class<? extends Benchmarkable>, Long>> results = new TreeMap<>();
 
     private final ExecutorService executorService;
 
@@ -50,7 +50,7 @@ public class Benchmarker {
             start = System.nanoTime();
         }
 
-        Map<Class, Long> result = new TreeMap<>(CLASS_COMPARATOR);
+        Map<Class<? extends Benchmarkable>, Long> result = new TreeMap<>(CLASS_COMPARATOR);
         List<Future<Pair<Benchmarkable, Long>>> futures = new ArrayList<>(benchmarkables.size());
 
         // Start benching
@@ -70,7 +70,7 @@ public class Benchmarker {
         results.put(loops, result);
     }
 
-    public Map<Long, Map<Class, Long>> stop() {
+    public Map<Long, Map<Class<? extends Benchmarkable>, Long>> stop() {
         end = System.nanoTime();
         executorService.shutdownNow();
         return results;
